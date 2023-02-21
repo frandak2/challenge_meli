@@ -1,0 +1,55 @@
+# creacion del modelo de clasificacion
+
+### Métricas para evaluación de modelos
+
+- El accuracy es engañosa
+
+El rendimiento de los algoritmos de aprendizaje automático se evalúa normalmente mediante el accuracy.
+Sin embargo, esto no es apropiado cuando los datos están desbalanceados y/o los costos de los diferentes errores varían significativamente,
+dado que se puede obtener un acurracy bastante alto con sólo predecir la clase mayoritaria sin tomar en cuenta la clase minoritaria,
+que por lo regular suele ser el objetivo por el cuál se está realizando el modelo de clasificación.
+
+Por ejemplo, se hace uso de un conjunto de datos que contiene transacciones hechas con tarjetas de credito en Europa en septiembre de 2013.
+Se está interesado en predecir si una persona incumplirá con el pago de su tarjeta. Se observa que de las 284807 transacciones registradas,
+sólo 492 corresponden a personas que incumplieron con el pago de su tarjeta (0.2 %), por lo que un modelo que clasifique todas las observaciones
+como no fraudulentas obtendría un accuracy igual a 99.8 %. Esta precisión sería alta simplemente porque la mayoría de las transacciones
+no son fraudulentas y no porque el modelo sea bueno.
+
+- AUC ROC es demasiado optimista
+
+La curva Receiver Operating Characteristics (ROC) y el área bajo la curva ROC (AUROC) se han convertido en la métrica más común para evaluar un modelo de clasificación.
+
+El área bajo la curva (AUROC) es una métrica de rendimiento que se puede utilizar para evaluar modelos de clasificación.
+AUROC permite medir si un modelo puede clasificar correctamente los ejemplos. AUROC es una métrica de rendimiento para la “discriminación”: 
+permite medir la capacidad del modelo para discriminar entre casos (ejemplos positivos) y no casos (ejemplos negativos).
+Un AUROC de 0.8 significa que el modelo tiene una buena capacidad de discriminación: 80 % de las ocasiones, el modelo asignará correctamente 
+un riesgo absoluto más alto a un paciente seleccionado al azar con un evento que a un paciente seleccionado al azar sin un evento.
+
+El peor AUROC es 0.5 y el mejor AUROC es 1.0.
+
+Sin embargo, cuando la clase negativa es más frecuente pero hay un valor bajo en las predicciones negativas verdaderas esta metrica no presenta buenos resultados.
+
+Por ejemplo, considere el caso de un conjunto de datos que tiene 10 positivos y 100000 negativos. Se dispone de 2 modelos:
+
+Modelo A: predice 900 positivos, de los cuales 9 son verdaderos positivos Modelo B: predice 90 positivos, de los cuales 9 son verdaderos positivos
+
+Obviamente, el Modelo B tiene un mejor rendimiento. Aunque ambos predicen el mismo número de positivos, el Modelo B no genera tantos falsos positivos.
+En otras palabras, el Modelo B es más “preciso”. Sin embargo, considere el análisis ROC de los dos modelos, que mide la tasa de verdaderos positivos (TPR)
+contra la tasa de falsos positivos (FPR):
+
+- Modelo A: TPR = 9/10 = 0.9 y FPR = (900–9) / 100,000 = 0.00891 Modelo B: TPR = 9/10 = 0.9 y FPR = (90–9) / 100,000 = 0.00081
+
+Como era de esperar, TPR es exactamente el mismo entre ambos modelos. Por otro lado, dado que el número de negativos domina en gran medida al de positivos,
+la diferencia de FPR entre ambos modelos (0.00891-0.00081 = 0.0081) se pierde en el sentido de que se puede redondear a casi 0.
+
+En otras palabras, un gran cambio en el número de falsos positivos resultó en un pequeño cambio en el FPR y, por lo tanto,
+la curva ROC no puede reflejar el desempeño superior del Modelo B en el contexto de que los verdaderos negativos no son relevantes para el problema.
+
+- Precision-Recall
+
+En contraste, la curva Precision-Recall (PR) está diseñada específicamente para la detección de eventos raros y es la métrica que debe usarse cuando la clase positiva es de más interés que la negativa.
+
+Debido a que la precisión y la recall no consideran verdaderos negativos, la curva PR no se ve afectada por el desequilibrio de datos. Volviendo al ejemplo anterior:
+Modelo A: Recall = TPR = 0.9 y Precision = 9/900 = 0.01 Modelo B: Recall = TPR = 0.9 y Precision = 9/90 = 0.1
+
+Claramente, el análisis de PR es más informativo en comparación con el análisis de la curva ROC.

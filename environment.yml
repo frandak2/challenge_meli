@@ -21,4 +21,7 @@ dependencies:
   - python=3.9
   - seaborn
   - fastapi
-  - 
+  - scikit-learn
+  - xgboost
+  - imbalanced-learn
+  - lime

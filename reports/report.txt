@@ -1,0 +1,39 @@
+# Model Pipeline Description
+### preprocessor:ColumnTransformer(transformers=[('num', StandardScaler(with_mean=False),
+                                 ['price', 'seller_address_longitude',
+                                  'seller_address_latitude', 'Hour_created',
+                                  'Min_created', 'Hour_updated', 'Min_updated',
+                                  'row_size', 'col_size', 'row_max_size',
+                                  'col_max_size']),
+                                ('cat-nominal', OneHotEncoder(),
+                                 ['listing_type_id', 'buying_mode',
+                                  'accepts_mercadopago', 'currency_id',
+                                  'automatic_relist', 'status',
+                                  'shipping_local_pick_up',
+                                  'shipping_free_shipping', 'shipping_mode',
+                                  'Month_created', 'day_name_created',
+                                  'Month_updated', 'day_name_updated'])])
+### model:XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, gpu_id=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              n_estimators=100, n_jobs=None, num_parallel_tree=None,
+              predictor=None, random_state=42, ...)
+### Train Score: 0.9914825377694962
+### Test Score: 0.8903886558666227
+### Validation Score: 0.9035043169121382
+### Reporte:
+               precision    recall  f1-score   support
+
+           0       0.90      0.84      0.86      1451
+           1       0.91      0.94      0.93      2487
+
+    accuracy                           0.90      3938
+   macro avg       0.90      0.89      0.89      3938
+weighted avg       0.90      0.90      0.90      3938
+

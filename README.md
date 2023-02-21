@@ -1,6 +1,30 @@
 # Challenge_MELI
 
-A short description of the project.
+In this challenge, I was provided with data in JSON format and tasked with developing a machine learning model to predict whether an article is new or used, based on the information provided in the data.
+
+## Tasks Performed
+Below are the tasks I completed to develop this machine learning model:
+
+1. Feature Engineering: I performed feature engineering to create new features from the features provided in the data. For example, I created a feature to represent the sizes of the article and another feature to represent the information of the article.
+
+2. Exploratory Data Analysis (EDA): I conducted exploratory data analysis to better understand the distributions of the features and to identify any outliers or missing values.
+
+3. Data Creation: I split the data into training and test sets and converted them into appropriate formats for model training.
+
+4. Model Training: I trained several binary classification models, using different machine learning algorithms to achieve the best possible results.
+
+5. Model Evaluation: I evaluated the performance of the models using different metrics, such as precision, recall, and F1 score, and selected the model that showed the best overall performance.
+
+6. Model Saving: I saved the selected model to a file for future use.
+
+7. API Creation with FastAPI: I created an API using FastAPI, a Python library for API creation. This API receives an HTTP request that includes the article information and returns an HTTP response that indicates whether the article is new or used.
+
+8. API Testing: I conducted tests on the API to ensure that it worked correctly and produced accurate results.
+
+9. Dockerfile Creation: I created a Dockerfile to package the API and its dependencies into a Docker container that can be easily deployed in different environments.
+
+## Conclusions
+In summary, in this challenge, I completed a variety of tasks to develop a machine learning model to classify articles as new or used. I also developed an API to implement this model in a production environment and created a Dockerfile to facilitate deployment in different environments.
   
 ## Installation guide
 

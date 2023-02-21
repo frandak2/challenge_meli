@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from pandas import DataFrame
 
 def get_model() -> Pipeline:
-    model = load('models/ypur_best_model.pkl')
+    model = load('models/pipe_model.pkl')
     return model
 
 def transform_to_dataframe(class_model: BaseModel) -> DataFrame:
